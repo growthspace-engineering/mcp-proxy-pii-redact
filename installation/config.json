@@ -1,0 +1,43 @@
+{
+  "mcpProxy": {
+    "baseURL": "http://localhost:8083",
+    "addr": ":8083",
+    "name": "MCP Proxy with PII Redaction",
+    "version": "1.0.0",
+    "type": "streamable-http",
+    "options": {
+      "panicIfInvalid": false,
+      "logEnabled": true
+    }
+  },
+  "mcpServers": {
+    "atlassian": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@0.1.17",
+        "https://mcp.atlassian.com/v1/sse",
+        "51328",
+        "--debug"
+      ],
+      "options": {
+        "panicIfInvalid": false,
+        "logEnabled": true
+      }
+    },
+    "barbecue-event": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://n8n-ai.kibibit.io/mcp/kb-pii"
+      ],
+      "options": {
+        "panicIfInvalid": false,
+        "logEnabled": true
+      }
+    }
+  },
+  "redaction": {
+    "enabled": true
+  }
+} 
